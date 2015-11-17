@@ -60,7 +60,7 @@ Link map of __startup
     3] .text (section,local) found in MPC5606B_HWInit_c.obj 
     3] .text.13 (notype,local) found in MPC5606B_HWInit_c.obj 
     3] .text (section,local) found in main_c.obj 
-    3] .text.48 (notype,local) found in main_c.obj 
+    3] .text.49 (notype,local) found in main_c.obj 
     3] .ivor_branch_table (section,local) found in ivor_branch_table_c.obj 
     3] .ivor_branch_table.24 (notype,local) found in ivor_branch_table_c.obj 
     3] .text (section,local) found in Timer_c.obj 
@@ -173,7 +173,7 @@ Link map of __startup
   000000a2 000116 000030a2 00000722  1 .text 	main_c.obj 
   000000a2 0000d0 000030a2 00000722  2 scheduler 	main_c.obj 
   00000172 000046 00003172 000007f2  2 main 	main_c.obj 
-  000001b8 000000 000031b8 00000838  1 .text.48 	main_c.obj 
+  000001b8 000000 000031b8 00000838  1 .text.49 	main_c.obj 
   000001b8 000098 000031b8 00000838  1 .text 	Timer_c.obj 
   000001b8 000064 000031b8 00000838  2 STM_config_clock 	Timer_c.obj 
   0000021c 000034 0000321c 0000089c  2 function_time 	Timer_c.obj 
@@ -444,12 +444,12 @@ Memory map:
                .sdata2 400003bc 00000000 00001000 00003800 00003800          0
                 .sbss2 400003bc 00000000 00001000 00003800 00003800          0
                   .bss 400003bc 00000000 00001000 00003800 00003800          0
-      .PPC.EMB.apuinfo 00006070 00000000 00007070 00009870 00009870          0
+      .PPC.EMB.apuinfo 00006074 00000000 00007080 00009874 00009874          0
          .debug_abbrev          0000013b 00001000
            .debug_info          00001a18 0000113b
-           .debug_line          00002ff6 00002b53
-            .debug_loc          00000424 00005b49
-       .debug_pubnames          00000451 00005f6d
+           .debug_line          00002ffa 00002b53
+            .debug_loc          00000424 00005b4d
+       .debug_pubnames          00000451 00005f71
 
 
 Linker generated symbols:

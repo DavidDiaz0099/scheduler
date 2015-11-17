@@ -1,12 +1,81 @@
 
+/*============================================================================*/
+/*                        I BS SOFTWARE GROUP                                 */
+/*============================================================================*/
+/*                        OBJECT SPECIFICATION                                */
+/*============================================================================*/
+/*!
+ * $Source: main.c $
+ * $Revision:  5.0 $
+ * $Author: FRANCISCO JAVIER QUIRARTE PELAYO $
+ * 			DAVID ANTONIO DIAZ RAMIREZ
+ * $Date:   15/11/2015 $
+ */
+/*============================================================================*/
+/* DESCRIPTION :	Scheduling refers to making a sequence of time execution 
+ * decisions at specific intervals, this decision that is made is based on a 
+ * predictable algorithm.  An application that does not need its current 
+ * allocation leaves the resource available for another application's use. 
+ * The underlying algorithm defines how the term “controlled” is interpreted, 
+ * in some instances, the scheduling algorithm might guarantee that all 
+ * applications have some access to the resource. The Binary Progression 
+ * Scheduler (BPS) manages the access to the CPU resources in a controlled way. 
+ *                                                               */
+/** SHORT DESCRIPTION: The file main.c contain the all headers implemented by 
+ *  the scheduler module thought contain the all functions required for the 
+ *  system
+*/
+/*============================================================================*/
+/* COPYRIGHT (C) CONTINENTAL AUTOMOTIVE 2014                                  */
+/* AUTOMOTIVE GROUP, Interior Division, Body and Security                     */
+/* ALL RIGHTS RESERVED                                                        */
+/*                                                                            */
+/* The reproduction, transmission, or use of this document or its content is  */
+/* not permitted without express written authority. Offenders will be liable  */
+/* for damages.                                                               */
+/* All rights, including rights created by patent grant or registration of a  */
+/* utility model or design, are reserved.                                     */
+/*                                                                            */
+/*============================================================================*/
+/*============================================================================*/
+/*                    REUSE HISTORY - taken over from                         */
+/*============================================================================*/
+/*  DATABASE           |        PROJECT     | FILE VERSION (AND INSTANCE)     */
+/*----------------------------------------------------------------------------*/
+/*                     |  scheduler         |          5.0                    */
+/*============================================================================*/
+/*                               OBJECT HISTORY                               */
+/*============================================================================*/
+/*
+ * $Log: main.c  $
+  ============================================================================*/
 
-#include "Application\Kernel.h"
+/* Includes */
+/*============================================================================*/
+
+#include "Application\Kernel.h"        //contain all headers
+
+/* Constants and types  */
+/*============================================================================*/
 
 typedef void(*FuncPtr)(void );    //pointer to fun
 extern tickflag;                 //if tickflag is activated increase the counter of tasks
 
+/* Variables */
+/*============================================================================*/
+int periodo;          
+int offset;
+char indice;
+int contador_de_tareas[E_ISK_TASK_NUM];  //total number of tasks
+
+/* Private functions prototypes */
+/*============================================================================*/
 void scheduler(void);          //function of the logic of the system
 
+Tasks();     //add the number of tasks
+
+/* Inline functions */
+/*============================================================================*/
 typedef struct{              //structure contain the members
 	
 	FuncPtr puntero;       //pointer to function task
@@ -27,8 +96,8 @@ const S_TASKS TASK_LIST[E_ISK_TASK_NUM]={
 	/*  Task(n)          Offset(n)  Period(n)*/			
 };
 
-Tasks();     //add the number of tasks
-
+/* Private functions */
+/*=================================================================================================*/
 
 void scheduler(void){     //prototype of logic of the system
 
@@ -62,9 +131,10 @@ for (indice=0; indice<E_ISK_TASK_NUM; indice++)	{                    //control o
 	}
 }
 
-
+/* Exported functions */
+/*===============================================================================================*/
 int main(void) {
-	INIT();                    //initialises the system modes (reloj interno, modos de ejecucion)
+	INIT();                    //initialises the system modes 
 	init_leds ();             //config LEDs on board and port(X)
 	STM_config_clock();      //Initialise channel 0 STM
 	INTC.CPR.B.PRI = 0;     //reset the interrupt handler
@@ -73,5 +143,6 @@ int main(void) {
 	
 }
 
+ /* Notice: the file ends with a blank new line to avoid compiler warnings */
 
 
